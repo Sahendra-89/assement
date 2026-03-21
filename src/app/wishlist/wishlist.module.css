@@ -1,0 +1,102 @@
+.header {
+  background: linear-gradient(180deg, rgba(255,107,107,0.08) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0 32px;
+  margin-bottom: 40px;
+}
+.headerInner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.subtitle { color: var(--text-muted); font-size: 0.95rem; }
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all var(--transition);
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.item:hover {
+  border-color: rgba(255,107,107,0.25);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.imgWrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  background: #1a1a28;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.4;
+  transition: color var(--transition);
+  font-family: 'Inter', sans-serif;
+}
+.title:hover { color: var(--accent); }
+
+.meta { display: flex; align-items: center; gap: 8px; }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+.inCart {
+  background: rgba(34,197,94,0.15) !important;
+  color: var(--success) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(34,197,94,0.3) !important;
+}
+
+@media (max-width: 600px) {
+  .item { flex-wrap: wrap; }
+  .imgWrap { width: 80px; height: 80px; }
+  .actions { flex-direction: row; width: 100%; justify-content: space-between; }
+}

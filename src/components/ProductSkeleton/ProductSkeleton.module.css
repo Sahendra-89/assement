@@ -1,0 +1,26 @@
+.card {
+  pointer-events: none;
+  animation: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 0;
+}
+.content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.line {
+  height: 14px;
+  border-radius: 6px;
+}
+.short { width: 50%; }
+.full { width: 100%; }
+.med { width: 75%; }
+.price { width: 40%; height: 20px; }
+.btn { height: 38px; border-radius: 999px; }

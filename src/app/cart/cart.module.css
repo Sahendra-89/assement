@@ -1,0 +1,110 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.header {
+  background: linear-gradient(180deg, rgba(108,71,255,0.08) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0 32px;
+  margin-bottom: 40px;
+}
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.subtitle { color: var(--text-muted); font-size: 0.95rem; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 80px;
+}
+
+/* ===== ITEMS SECTION ===== */
+.itemsSection { display: flex; flex-direction: column; gap: 16px; }
+
+.itemsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.itemsCount { font-weight: 600; font-size: 0.9rem; color: var(--text-muted); }
+
+.itemsList { display: flex; flex-direction: column; gap: 14px; }
+
+.continueShopping { padding-top: 8px; }
+
+/* ===== SUMMARY ===== */
+.summary {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summaryTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.summaryLine {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.free { color: var(--success); font-weight: 700; }
+
+.shippingNote {
+  background: rgba(108,71,255,0.1);
+  border: 1px solid rgba(108,71,255,0.2);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.divider { height: 1px; background: var(--border); }
+
+.totalLine {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.totalAmount {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+.secureNote {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.promoBlock { display: flex; flex-direction: column; gap: 8px; }
+.promoLabel { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+.promoRow { display: flex; gap: 8px; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .summary { position: static; }
+}
