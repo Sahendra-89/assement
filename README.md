@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚡ LuxeShop — Premium E-Commerce App
 
-## Getting Started
+A full-featured e-commerce web application built with **Next.js 16** (App Router), featuring a stunning dark theme, real product data from Fake Store API, and complete shopping functionality.
 
-First, run the development server:
+## 🚀 Live Demo
+
+Deployed on Vercel — [View Live](https://your-deployment-url.vercel.app)
+
+## ✨ Features
+
+- **Product Listing** — Browse 20 products fetched from Fake Store API with search, sort & filter
+- **Product Detail** — Full product page with gallery, rating, tabs, and related products
+- **Shopping Cart** — Add/remove/update qty, persisted in localStorage, dynamic shipping calculation
+- **Wishlist** — Save favourites, persisted in localStorage, bulk "Add All to Cart"
+- **Checkout** — Full form validation, multiple payment methods, animated success state
+
+## 🛠 Tech Stack
+
+| Technology | Usage |
+|---|---|
+| Next.js 16 (App Router) | Framework |
+| React Context + useReducer | State management |
+| Vanilla CSS Modules | Styling |
+| Fake Store API | Product data |
+| localStorage | Cart & Wishlist persistence |
+| Google Fonts (Inter + Playfair Display) | Typography |
+
+## 📦 Getting Started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── page.js              # Homepage
+│   ├── products/            # Product listing + detail pages
+│   ├── cart/                # Cart page
+│   ├── wishlist/            # Wishlist page
+│   └── checkout/            # Checkout page
+├── components/              # Reusable UI components
+├── context/                 # Cart, Wishlist & Toast contexts
+└── lib/                     # API utilities & helpers
+```
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This app is configured for **Vercel** deployment:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push to GitHub
+2. Import repo in [vercel.com](https://vercel.com)
+3. Click Deploy — no configuration needed!
