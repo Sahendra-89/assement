@@ -1,61 +1,99 @@
-# ⚡ LuxeShop — Premium E-Commerce App
+# LuxeShop — E-Commerce App
 
-A full-featured e-commerce web application built with **Next.js 16** (App Router), featuring a stunning dark theme, real product data from Fake Store API, and complete shopping functionality.
+A personal project I built to practice Next.js App Router and modern React patterns. It's a fully working shopping app with cart, wishlist, and checkout — nothing fancy behind the scenes, just a clean frontend pulling data from a public API.
 
-## 🚀 Live Demo
+Live demo: [https://your-deployment-url.vercel.app](https://your-deployment-url.vercel.app) _(update this once deployed)_
 
-Deployed on Vercel — [View Live](https://your-deployment-url.vercel.app)
+---
 
-## ✨ Features
+## What it does
 
-- **Product Listing** — Browse 20 products fetched from Fake Store API with search, sort & filter
-- **Product Detail** — Full product page with gallery, rating, tabs, and related products
-- **Shopping Cart** — Add/remove/update qty, persisted in localStorage, dynamic shipping calculation
-- **Wishlist** — Save favourites, persisted in localStorage, bulk "Add All to Cart"
-- **Checkout** — Full form validation, multiple payment methods, animated success state
+- Browse products with category filter, search, and sort options
+- View individual product pages with ratings and related items
+- Add to cart or wishlist — both persist in localStorage so they survive page refresh
+- Checkout flow with form validation and a success screen
+- Toast notifications when you add/remove things
 
-## 🛠 Tech Stack
+---
 
-| Technology | Usage |
-|---|---|
-| Next.js 16 (App Router) | Framework |
-| React Context + useReducer | State management |
-| Vanilla CSS Modules | Styling |
-| Fake Store API | Product data |
-| localStorage | Cart & Wishlist persistence |
-| Google Fonts (Inter + Playfair Display) | Typography |
+## Tech used
 
-## 📦 Getting Started
+- **Next.js 16** with the App Router
+- **React 19** — Context API + useReducer for cart/wishlist state
+- **CSS Modules** — kept it vanilla, no Tailwind
+- **DummyJSON** (`https://dummyjson.com`) for product data — free, no key needed
+- Deployed on **Vercel**
+
+---
+
+## Getting started
+
+You'll need Node 18+ installed.
 
 ```bash
-# Install dependencies
+git clone https://github.com/<your-username>/<your-repo>.git
+cd ecommerce-app
 npm install
-
-# Run the development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+That's it. Open `http://localhost:3000`.
 
-## 📁 Project Structure
+No `.env` file needed — the API is public.
+
+---
+
+## Folder structure
 
 ```
 src/
 ├── app/
-│   ├── page.js              # Homepage
-│   ├── products/            # Product listing + detail pages
-│   ├── cart/                # Cart page
-│   ├── wishlist/            # Wishlist page
-│   └── checkout/            # Checkout page
-├── components/              # Reusable UI components
-├── context/                 # Cart, Wishlist & Toast contexts
-└── lib/                     # API utilities & helpers
+│   ├── page.js              # home page
+│   ├── layout.js            # root layout with navbar/footer
+│   ├── globals.css          # global styles and CSS variables
+│   ├── products/            # listing + individual product pages
+│   ├── cart/
+│   ├── wishlist/
+│   └── checkout/
+├── components/              # Navbar, Footer, ProductCard, CartItem, etc.
+├── context/                 # CartContext, WishlistContext, ToastContext
+└── lib/
+    ├── api.js               # all the DummyJSON fetch calls
+    └── utils.js             # helpers like formatPrice, renderStars, etc.
 ```
 
-## 🌐 Deployment
+---
 
-This app is configured for **Vercel** deployment:
+## API details
 
-1. Push to GitHub
-2. Import repo in [vercel.com](https://vercel.com)
-3. Click Deploy — no configuration needed!
+Everything goes through `src/lib/api.js`. I'm using four endpoints from DummyJSON:
+
+| What | Endpoint |
+|---|---|
+| All products | `GET /products?limit=100` |
+| Single product | `GET /products/:id` |
+| Categories | `GET /products/categories` |
+| By category | `GET /products/category/:slug` |
+
+DummyJSON's product object uses `thumbnail` instead of `image`, and `rating` is just a plain number rather than `{ rate, count }`. I normalize all of that in a small `normalize()` function so the rest of the app doesn't have to care.
+
+Fetches use Next.js `{ next: { revalidate: 3600 } }` so data is cached for an hour at the edge — pages load fast without hammering the API.
+
+---
+
+## Building for production
+
+```bash
+npm run build
+npm run start
+```
+
+Or just push to GitHub and connect it to Vercel — it picks up the Next.js config automatically and deploys in about a minute.
+
+---
+
+## Notes
+
+- Images are served from `cdn.dummyjson.com` — that domain is whitelisted in `next.config.mjs`
+- Cart and wishlist state is reset if the user clears `localStorage`
+- No backend, no database — this is purely a frontend project

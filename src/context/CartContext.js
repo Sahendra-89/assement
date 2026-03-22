@@ -99,4 +99,4 @@ export function useCart() {
   const ctx = useContext(CartContext);
   if (!ctx) throw new Error('useCart must be inside CartProvider');
   return ctx;
-}
+} 
